@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2f3134;
+  --color-secondary: #191717;
+}
+
+.bg-pattern {
+  background-image: url("/bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #2d2d2d;
+}
+
+body {
+  font-family: "Pixelify Sans", sans-serif;
+}
