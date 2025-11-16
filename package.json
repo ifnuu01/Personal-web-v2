@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@blocknote/code-block": "^0.42.0",
+    "@blocknote/core": "^0.42.0",
+    "@blocknote/mantine": "^0.42.0",
+    "@blocknote/react": "^0.42.0",
     "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.1.17",
     "axios": "^1.13.2",

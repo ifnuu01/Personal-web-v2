@@ -19,7 +19,7 @@ export default function Public({ children }: { children: React.ReactNode }) {
         <div
             className="pt-40 px-4 md:px-10 lg:px-30"
         >
-            <div className="fixed right-0 top-80 flex flex-col justify-end">
+            <div className="fixed right-0 top-80 flex flex-col justify-end z-100">
                 {socialMedia.map((item) => (
                     <a href={item.link} target="_blank" rel="noopener noreferrer" key={item.name}>
                         <Button className="py-4">

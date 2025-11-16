@@ -26,14 +26,14 @@ export interface AuthContextType {
     token: string | null;
 };
 
-export interface Category {
+export interface Category extends Record<string, unknown> {
     _id: number | string;
     name: string;
     createdAt: string;
     updatedAt: string;
 };
 
-export interface Certificate {
+export interface Certificate extends Record<string, unknown> {
     _id: number | string;
     imageUrl: string;
     title: string;
@@ -43,8 +43,9 @@ export interface Certificate {
     updatedAt: string;
 };
 
-export interface Experience {
+export interface Experience extends Record<string, unknown> {
     _id: number | string;
+    title: string;
     company: string;
     startDate: string;
     endDate: string | null;
@@ -54,7 +55,7 @@ export interface Experience {
     updatedAt: string;
 };
 
-export interface Project {
+export interface Project extends Record<string, unknown> {
     _id: number | string;
     imageSrc: string;
     title: string;
@@ -70,14 +71,14 @@ export interface Project {
     updatedAt: string;
 };
 
-export interface Tech {
+export interface Tech extends Record<string, unknown> {
     _id: number | string;
     icon: string;
     createdAt: string;
     updatedAt: string;
 };
 
-export interface Blog {
+export interface Blog extends Record<string, unknown> {
     _id: number | string;
     title: string;
     slug: string;
