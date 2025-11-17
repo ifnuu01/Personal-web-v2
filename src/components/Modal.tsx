@@ -14,9 +14,9 @@ export default function Modal({ isOpen, onClose, title, children, className }: M
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-1000 p-4">
             <div className={clsx(
-                "bg-secondary/90 backdrop-blur-md w-full max-w-md max-h-[90vh] flex flex-col",
+                "bg-secondary/90 backdrop-blur-md w-full max-w-5xl max-h-[90vh] flex flex-col",
                 className
             )}>
                 <div className="flex items-center justify-between p-4 border-b border-white/10 flex-shrink-0">

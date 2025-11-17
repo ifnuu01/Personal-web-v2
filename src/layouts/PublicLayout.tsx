@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import Button from "../components/Button";
 
-export default function Public({ children }: { children: React.ReactNode }) {
+export default function Public({ children, title, icon }: { children: React.ReactNode, title?: string, icon?: string }) {
     const socialMedia = [
         {
             name: "LinkedIn",
@@ -17,7 +17,7 @@ export default function Public({ children }: { children: React.ReactNode }) {
 
     return (
         <div
-            className="pt-40 px-4 md:px-10 lg:px-30"
+            className="pt-30 px-4 md:px-10 lg:px-30"
         >
             <div className="fixed right-0 top-80 flex flex-col justify-end z-100">
                 {socialMedia.map((item) => (
@@ -28,6 +28,14 @@ export default function Public({ children }: { children: React.ReactNode }) {
                     </a>
                 ))}
             </div>
+            {(title && icon) && (
+                <div className="w-full flex justify-center items-center">
+                    <h1 className="flex flex-col items-center justify-center bg-white/10 text-white p-4">
+                        <Icon icon={icon} className="text-4xl mb-2" />
+                        <span className="text-3xl">{title}</span>
+                    </h1>
+                </div>
+            )}
             {children}
         </div >
     )

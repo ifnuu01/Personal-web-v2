@@ -51,7 +51,6 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 
     return (
         <>
-            {/* Sidebar */}
             <div className={clsx(
                 "w-60 h-screen bg-secondary/10 backdrop-blur-xs fixed top-0 left-0 pt-22 px-4 flex flex-col gap-4 z-5 transition-transform duration-300",
                 isOpen ? "translate-x-0" : "-translate-x-full"
@@ -66,7 +65,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                         <Button
                             bg={location.pathname === item.link ? "bg-white" : "bg-white/10"}
                             color={location.pathname === item.link ? "text-primary" : "text-white"}
-                            className="w-full font-bold"
+                            className="w-full"
                         >
                             <Icon icon={item.icon} />
                             {item.name}
@@ -75,7 +74,6 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                 ))}
             </div>
 
-            {/* Toggle Button (when sidebar is closed) */}
             <div className={clsx(
                 "fixed top-22 left-2 z-50 transition-opacity duration-300",
                 isOpen ? "opacity-0 pointer-events-none" : "opacity-100"
@@ -87,7 +85,6 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                 </div>
             </div>
 
-            {/* bg cant click */}
             {isOpen && (
                 <div
                     className="fixed inset-0 w-full h-screen bg-black/20 backdrop-blur-sm z-0 md:hidden"
