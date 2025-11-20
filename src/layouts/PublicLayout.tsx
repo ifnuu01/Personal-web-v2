@@ -22,7 +22,9 @@ export default function Public({ children, title, icon }: { children: React.Reac
             <div className="fixed right-0 top-80 flex flex-col justify-end z-100">
                 {socialMedia.map((item) => (
                     <a href={item.link} target="_blank" rel="noopener noreferrer" key={item.name}>
-                        <Button className="py-4">
+                        <Button
+                            className="py-4 backdrop-blur-lg"
+                        >
                             <Icon icon={item.icon} className="lg:text-2xl" />
                         </Button>
                     </a>

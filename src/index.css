@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-primary: #2f3134;
@@ -16,4 +17,23 @@
 
 body {
   font-family: "VT323", monospace;
+}
+
+.prose pre {
+  padding: 0;
+  background: transparent;
+}
+
+.prose pre,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose p,
+.prose li,
+.prose ol,
+.prose ul {
+  font-weight: 100 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.4;
 }

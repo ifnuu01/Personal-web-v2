@@ -1,35 +1,32 @@
-function Tech() {
+import { useEffect } from "react"
+import { useTech } from "../hooks/useTech"
+import { Icon } from "@iconify/react"
+import { motion } from "framer-motion"
 
-    const techs = [
-        {
-            icon: (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h8z" />
-                </svg>
-            )
-        },
-        {
-            icon: (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h8z" />
-                </svg>
-            )
-        },
-        {
-            icon: (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h8z" />
-                </svg>
-            )
-        },
-        {
-            icon: (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h8z" />
-                </svg>
-            )
-        },
-    ]
+const TechSkeleton = () => {
+    return (
+        <>
+            <div className="text-2xl md:text-4xl font-bold text-centermb-8 md:mb-16 bg-white/10 w-fit mx-auto px-6 py-2 animate-pulse">
+                <div className="w-40 py-2 bg-white/20"></div>
+            </div>
+
+            <div className="bg-white/10 p-4 text-white animate-pulse">
+                <div className="w-8 h-8 bg-white/20"></div>
+            </div>
+        </>
+    )
+}
+
+function Tech() {
+    const { items, getAll, loading } = useTech()
+
+    useEffect(() => {
+        getAll()
+    }, [])
+
+    if (loading) {
+        return <TechSkeleton />
+    }
 
     return (
         <div>
@@ -38,10 +35,33 @@ function Tech() {
             </div>
             {/* Content */}
             <div className="flex flex-wrap gap-4 justify-center items-center">
-                {techs.map((tech, index) => (
-                    <div className="bg-white/10 p-4 text-white" key={index}>
-                        {tech.icon}
-                    </div>
+                {items.length === 0 && (
+                    <p className="text-white text-2xl">No tech stack available.</p>
+                )}
+                {items.length > 0 && items.map((tech, index) => (
+                    <motion.div
+                        key={index}
+                        className="bg-white/10 p-4 text-white backdrop-blur-xs"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        viewport={{
+                            once: true,
+                            amount: 0.2
+                        }}
+                        whileHover={{
+                            rotate: 10,
+                            scale: 1.15,
+                            transition: {
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 20,
+                                duration: 0.2
+                            }
+                        }}
+                    >
+                        <Icon icon={tech.icon} className="text-2xl" />
+                    </motion.div>
                 ))}
             </div>
         </div>

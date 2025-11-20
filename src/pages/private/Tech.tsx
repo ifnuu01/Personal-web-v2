@@ -127,22 +127,22 @@ export default function Tech() {
 
 
     const popularIcons = [
-        "logos:react",
-        "logos:vue",
-        "logos:angular-icon",
-        "logos:javascript",
-        "logos:typescript-icon",
-        "logos:nodejs-icon",
-        "logos:python",
-        "logos:java",
-        "logos:php",
-        "logos:laravel",
-        "logos:mysql",
-        "logos:postgresql",
-        "logos:mongodb-icon",
-        "logos:git-icon",
-        "logos:docker-icon",
-        "logos:aws"
+        "mdi:react",
+        "mdi:vuejs",
+        "mdi:angular",
+        "cib:js",
+        "teenyicons:typescript-solid",
+        "mdi:nodejs",
+        "lineicons:python",
+        "mdi:language-java",
+        "mdi:language-php",
+        "mdi:laravel",
+        "mdi:database",
+        "simple-icons:postgresql",
+        "simple-icons:mongodb",
+        "mdi:git",
+        "mdi:docker",
+        "mdi:aws"
     ];
 
 
@@ -249,7 +249,7 @@ export default function Tech() {
                         {/* Icon Preview */}
                         {iconPreview && (
                             <div className="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                                <Icon icon={iconPreview} className="text-4xl" />
+                                <Icon icon={iconPreview} className="text-4xl text-white" />
                                 <div>
                                     <p className="text-white font-medium">Preview</p>
                                     <p className="text-white/60 text-sm">{iconPreview}</p>
@@ -285,7 +285,7 @@ export default function Tech() {
                                         }}
                                         className="flex flex-col items-center gap-2 p-3 bg-white/5 hover:bg-white/10 rounded cursor-pointer transition-all group"
                                     >
-                                        <Icon icon={iconName} className="text-2xl group-hover:scale-110 transition-transform" />
+                                        <Icon icon={iconName} className="text-2xl group-hover:scale-110 transition-transform text-white" />
                                         <span className="text-xs text-white/60 text-center">{iconName.split(':')[1] || iconName}</span>
                                     </div>
                                 ))}
@@ -323,7 +323,7 @@ export default function Tech() {
                     <div className="flex flex-col gap-4">
                         {deletingTech && (
                             <div className="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                                <Icon icon={deletingTech.icon} className="text-3xl" />
+                                <Icon icon={deletingTech.icon} className="text-3xl text-white" />
                                 <div>
                                     <p className="text-white font-medium">{deletingTech.icon}</p>
                                     <p className="text-white/60 text-sm">This tech will be permanently deleted</p>

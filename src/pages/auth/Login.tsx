@@ -45,7 +45,7 @@ export default function Login() {
 
     return (
         <PublicLayout>
-            <div className="flex justify-center items-center mt-20">
+            <div className="flex justify-center items-center min-h-screen">
                 <form onSubmit={handleSubmit} className="flex flex-col justify-center w-96 bg-white/10 p-6 text-white space-y-4 backdrop-blur-xs">
                     <h1 className="text-4xl text-center">Login</h1>
                     <div>

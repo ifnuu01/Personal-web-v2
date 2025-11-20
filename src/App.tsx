@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router"
 import Navbar from "./components/Navbar"
 import About from "./pages/public/About"
 import Project from "./pages/public/Project"
-import Achivement from "./pages/public/Achivement"
+import Achievement from "./pages/public/Achievement"
 import Blog from "./pages/public/Blog"
 import Resume from "./pages/public/Resume"
 import { AnimatePresence } from 'framer-motion';
@@ -17,10 +17,12 @@ import ProjectManage from "./pages/private/Project";
 import BlogManage from "./pages/private/Blog"
 import GuestRoute from "./components/GuestRoute"
 import ProtectedRoute from "./components/ProtectedRoute"
+import Footer from "./components/Footer"
+import ScrollToTop from "./components/ScrollToTop"
 
 const AboutWithTransition = withTransition(About);
 const ProjectWithTransition = withTransition(Project);
-const AchivementWithTransition = withTransition(Achivement);
+const AchievementWithTransition = withTransition(Achievement);
 const BlogWithTransition = withTransition(Blog);
 const ResumeWithTransition = withTransition(Resume);
 const LoginWithTransition = withTransition(Login);
@@ -36,6 +38,7 @@ const BlogManageWithTransition = withTransition(BlogManage);
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AnimatePresence mode="wait">
         <div className="flex flex-col min-h-screen bg-pattern">
           <Navbar />
@@ -43,7 +46,7 @@ function App() {
             {/* Public */}
             <Route path="/" element={<AboutWithTransition />} />
             <Route path="/project" element={<ProjectWithTransition />} />
-            <Route path="/achivement" element={<AchivementWithTransition />} />
+            <Route path="/achievement" element={<AchievementWithTransition />} />
             <Route path="/blog" element={<BlogWithTransition />} />
             <Route path="/resume" element={<ResumeWithTransition />} />
 
@@ -63,6 +66,7 @@ function App() {
               <Route path="/dashboard/blog" element={<BlogManageWithTransition />} />
             </Route>
           </Routes>
+          <Footer />
         </div>
       </AnimatePresence>
     </BrowserRouter>

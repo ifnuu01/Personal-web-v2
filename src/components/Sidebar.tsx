@@ -35,7 +35,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         {
             name: "Certificate",
             link: "/dashboard/certificate",
-            icon: "pixel:trophy"
+            icon: "streamline-pixel:social-rewards-certified-diploma"
         },
         {
             name: "Experience",

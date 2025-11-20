@@ -8,6 +8,7 @@ import Table from "../../components/Table";
 import { useExperience } from "../../hooks/useExperience";
 import type { Experience } from "../../types/type";
 import Textarea from "../../components/Textarea";
+import { toDateInputValue } from "../../utils/date";
 
 interface ExperienceForm extends Record<string, unknown> {
     title: string;
@@ -166,8 +167,8 @@ export default function Experience() {
         setFormData({
             title: experience.title,
             company: experience.company,
-            startDate: experience.startDate,
-            endDate: experience.endDate || "",
+            startDate: toDateInputValue(experience.startDate),
+            endDate: experience.endDate ? toDateInputValue(experience.endDate) : "",
             description: experience.description,
             icon: experience.icon
         });
@@ -351,7 +352,8 @@ export default function Experience() {
 
                             {iconPreview && (
                                 <div className="flex items-end">
-                                    <div className="flex items-center gap-3 p-4 w-full">
+                                    <div className="flex items-center gap-3 p-4 bg-white/10 justify-center w-fit text-white">
+                                        <h1>Preview &gt;</h1>
                                         <Icon icon={iconPreview} className="text-3xl" />
                                     </div>
                                 </div>
@@ -455,8 +457,8 @@ export default function Experience() {
                 >
                     <div className="flex flex-col gap-4">
                         {deletingExperience && (
-                            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                                <Icon icon={deletingExperience.icon} className="text-3xl" />
+                            <div className="flex items-center gap-4 p-4 bg-white/5">
+                                <Icon icon={deletingExperience.icon} className="text-3xl text-white" />
                                 <div>
                                     <p className="text-white font-medium">{deletingExperience.company}</p>
                                     <p className="text-white/60 text-sm">

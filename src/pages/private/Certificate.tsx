@@ -15,6 +15,7 @@ interface CertificateForm extends Record<string, unknown> {
     title: string;
     description: string;
     link: string;
+    institution: string;
 }
 
 export default function Certificate() {
@@ -26,7 +27,8 @@ export default function Certificate() {
     const [formData, setFormData] = useState<CertificateForm>({
         title: "",
         description: "",
-        link: ""
+        link: "",
+        institution: ""
     });
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [formErrors, setFormErrors] = useState<Record<string, string>>({});
@@ -41,7 +43,8 @@ export default function Certificate() {
         setFormData({
             title: "",
             description: "",
-            link: ""
+            link: "",
+            institution: ""
         });
         setSelectedFile(null);
         setFormErrors({});
@@ -89,6 +92,10 @@ export default function Certificate() {
             errors.description = "Certificate description is required";
         }
 
+        if (!formData.institution.trim()) {
+            errors.institution = "Certificate institution is required";
+        }
+
         if (!formData.link.trim()) {
             errors.link = "Certificate link is required";
         } else if (!isValidUrl(formData.link)) {
@@ -126,6 +133,7 @@ export default function Certificate() {
             formDataToSend.append('title', formData.title);
             formDataToSend.append('description', formData.description);
             formDataToSend.append('link', formData.link);
+            formDataToSend.append('institution', formData.institution);
 
             let response;
             if (editingCertificate) {
@@ -165,7 +173,8 @@ export default function Certificate() {
         setFormData({
             title: certificate.title,
             description: certificate.description,
-            link: certificate.link
+            link: certificate.link,
+            institution: certificate.institution
         });
         setSelectedFile(null);
         setIsModalOpen(true);
@@ -344,6 +353,18 @@ export default function Certificate() {
                                 name="title"
                                 id="title"
                                 error={formErrors.title}
+                                required
+                            />
+
+                            <Input
+                                label="Institution"
+                                type="text"
+                                placeholder="e.g. Coursera, Udemy, etc."
+                                value={formData.institution}
+                                onChange={handleInputChange}
+                                name="institution"
+                                id="institution"
+                                error={formErrors.institution}
                                 required
                             />
 

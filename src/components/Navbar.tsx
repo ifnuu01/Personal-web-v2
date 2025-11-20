@@ -27,19 +27,14 @@ export default function Navbar() {
             icon: "pixel:code-solid"
         },
         {
-            name: "Achivement",
-            link: "/achivement",
-            icon: "pixel:trophy"
+            name: "Achievement",
+            link: "/achievement",
+            icon: "streamline-pixel:social-rewards-certified-diploma"
         },
         {
             name: "Blog",
             link: "/blog",
             icon: "pixel:newspaper"
-        },
-        {
-            name: "Resume",
-            link: "/resume",
-            icon: "memory:file"
         },
         {
             name: "Login",
@@ -60,7 +55,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="fixed flex justify-between px-4 md:px-10 lg:px-30 bg-secondary/70 backdrop-blur-xs w-full py-5 z-10">
+            <nav className="fixed flex justify-between px-4 md:px-10 lg:px-30 bg-secondary/70 backdrop-blur-xs w-full py-5 z-50">
                 <Link to="/" className="text-white text-3xl">Ifnu Umar</Link>
                 <ul className="hidden md:flex gap-4">
                     {menuItems.filter(item => auth?.user ? item.name !== "Login" : (item.name !== "Logout" && item.name !== "Dashboard")).map((item) => (

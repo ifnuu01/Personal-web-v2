@@ -39,6 +39,7 @@ export interface Certificate extends Record<string, unknown> {
     title: string;
     description: string;
     link: string;
+    institution: string;
     createdAt: string;
     updatedAt: string;
 };
