@@ -11,11 +11,12 @@ function ProjectCard({ project }: { project: Project }) {
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="overflow-hidden"
         >
             <a href={project.linkUrl}
                 key={project._id}
                 target="_blank"
-                className="flex flex-col bg-white/10 max-w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300">
+                className="flex flex-col bg-white/10 max-w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300 overflow-hidden">
                 <header className="w-full h-50">
                     {!imgLoaded && !imgError && (
                         <div className="absolute inset-0 bg-gray-300 animate-pulse rounded" />
