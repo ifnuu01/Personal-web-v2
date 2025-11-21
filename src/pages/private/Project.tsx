@@ -159,9 +159,14 @@ export default function Project() {
 
             handleCloseModal();
             getAll();
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error submitting form:', error);
-            setFormErrors({ submit: 'An error occurred while submitting the form' });
+            if (error.response) {
+                console.error('Response data:', error.response.data);
+                setFormErrors({ submit: error.response.data?.message || 'An error occurred while submitting the form' });
+            } else {
+                setFormErrors({ submit: 'An error occurred while submitting the form' });
+            }
         } finally {
             setIsSubmitting(false);
         }
