@@ -23,7 +23,7 @@ export async function customMarkdownToBlocks(
         blocks.push({
             type: "codeBlock",
             props: { language: lang },
-            content: [{ type: "text", text: code.trim() }],
+            content: [{ type: "text", text: code.trim(), styles: {} }]
         });
 
         lastIndex = matchStart + matchFull.length;
@@ -39,7 +39,7 @@ export async function customMarkdownToBlocks(
 }
 
 export function fixCodeBlocksInMarkdown(markdown: string): string {
-    return markdown.replace(/```(\w*)\s*(.*?)```/gs, (match, lang, code) => {
+    return markdown.replace(/```(\w*)\s*(.*?)```/gs, (lang, code) => {
         const trimmed = code.trim();
         return `\`\`\`${lang || ""}\n${trimmed}\n\`\`\``;
     });

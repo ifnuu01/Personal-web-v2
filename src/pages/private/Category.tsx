@@ -66,9 +66,9 @@ export default function Category() {
         try {
             let message;
             if (editingCategory) {
-                message = await update(editingCategory._id, formData);
+                message = await update(editingCategory._id, formData as Partial<Category>);
             } else {
-                message = await create(formData);
+                message = await create(formData as Partial<Category>);
             }
 
             if (message) {

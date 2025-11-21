@@ -73,6 +73,7 @@ function BlogCard({ blog }: { blog: Blog }) {
                                         const match = /language-(\w+)/.exec(className || "");
                                         return match ? (
                                             <SyntaxHighlighter
+                                                // @ts-expect-error Type issue with SyntaxHighlighter style property
                                                 style={oneDark}
                                                 language={match[1]}
                                                 PreTag="div"
