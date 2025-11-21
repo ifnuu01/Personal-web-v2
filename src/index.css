@@ -9,7 +9,7 @@
 
 .bg-pattern {
   background-image: url("/bg.svg");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-attachment: fixed;
   background-color: #2d2d2d;
