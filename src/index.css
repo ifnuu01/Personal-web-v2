@@ -15,10 +15,6 @@
   background-color: #2d2d2d;
 }
 
-body {
-  font-family: "VT323", monospace;
-}
-
 .prose pre {
   padding: 0;
   background: transparent;
@@ -36,4 +32,44 @@ body {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   line-height: 1.4;
+}
+
+body {
+  font-family: "VT323", monospace;
+  font-size: 1.2rem; /* Tambahkan ukuran dasar */
+}
+
+.prose h1 {
+  font-size: 2.5rem;
+}
+.prose h2 {
+  font-size: 2rem;
+}
+.prose h3 {
+  font-size: 1.5rem;
+}
+.prose p,
+.prose li,
+.prose ol,
+.prose ul {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .prose h1 {
+    font-size: 2rem;
+  }
+  .prose h2 {
+    font-size: 1.5rem;
+  }
+  .prose h3 {
+    font-size: 1.2rem;
+  }
+  body,
+  .prose p,
+  .prose li,
+  .prose ol,
+  .prose ul {
+    font-size: 1rem;
+  }
 }
