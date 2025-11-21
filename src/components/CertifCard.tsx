@@ -4,6 +4,8 @@ import { useState } from "react"
 
 function CertifCard({ certif }: { certif: Certificate }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [imgLoaded, setImgLoaded] = useState(false);
+    const [imgError, setImgError] = useState(false);
 
     return (
         <>
@@ -21,7 +23,22 @@ function CertifCard({ certif }: { certif: Certificate }) {
                 title="Certificate Details"
             >
                 <div className="space-y-4">
-                    <img src={certif.imageUrl} alt={certif.title} width={'100%'} />
+                    {!imgLoaded && !imgError && (
+                        <div className="absolute inset-0 bg-gray-300 animate-pulse" />
+                    )}
+                    <img
+                        src={certif.imageUrl}
+                        alt={certif.title}
+                        width={'100%'}
+                        className={`w-full max-h-[80vh] object-contain transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+                        onLoad={() => setImgLoaded(true)}
+                        onError={() => setImgError(true)}
+                    />
+                    {imgError && (
+                        <div className="w-full h-80 flex items-center justify-center bg-gray-200 text-gray-500">
+                            Gambar gagal dimuat
+                        </div>
+                    )}
                     <p className="text-white">
                         {certif.description}
                     </p>

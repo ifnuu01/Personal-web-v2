@@ -43,9 +43,9 @@ export default function Profile() {
                 id="profile"
                 className="relative md:order-2"
                 initial={{ opacity: 0, x: 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.8 }}
+                animate={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
             >
                 <div className="absolute py-4 px-5 bg-white left-1 top-10 animate-bounce">
                     <h1 className="font-bold text-2xl">
@@ -59,9 +59,9 @@ export default function Profile() {
                 <motion.h1
                     className="text-5xl animate-pulse"
                     initial={{ opacity: 0, x: -100 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
                 >
                     Fullstack Developer
                 </motion.h1>
@@ -70,9 +70,9 @@ export default function Profile() {
                 <motion.p
                     className="max-w-3xl"
                     initial={{ opacity: 0, x: -100 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
                 >
                     I am an Informatics Engineering student at Mulawarman University with a strong passion for web development. While I have skills across the full stack, my primary interest and expertise lie in back-end development.
                     I enjoy designing and building robust APIs, managing databases (like MongoDB, MySQL, PostgreSQL), and ensuring optimal server-side performance. I am proficient in back-end technologies such as Node.js and Laravel, and I am also experienced with front-end frameworks like React.
@@ -83,9 +83,9 @@ export default function Profile() {
                 {/* Tombol */}
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
                 >
                     <Button
                         onClick={() => setIsModalOpen(true)}

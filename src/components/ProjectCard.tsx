@@ -1,8 +1,11 @@
 import { Icon } from "@iconify/react"
 import type { Project } from "../types/type"
 import { motion } from "framer-motion"
+import { useState } from "react"
 
 function ProjectCard({ project }: { project: Project }) {
+    const [imgLoaded, setImgLoaded] = useState(false)
+    const [imgError, setImgError] = useState(false)
     return (
         <motion.div
             initial={{ opacity: 0, y: 100 }}
@@ -14,7 +17,21 @@ function ProjectCard({ project }: { project: Project }) {
                 target="_blank"
                 className="flex flex-col bg-white/10 max-w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300">
                 <header className="w-full h-50">
-                    <img src={project.imageSrc} alt="image" className="w-full h-50 object-cover" />
+                    {!imgLoaded && !imgError && (
+                        <div className="absolute inset-0 bg-gray-300 animate-pulse rounded" />
+                    )}
+                    <img
+                        src={project.imageSrc}
+                        alt="image"
+                        className={`w-full h-50 object-cover transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+                        onLoad={() => setImgLoaded(true)}
+                        onError={() => setImgError(true)}
+                    />
+                    {imgError && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500">
+                            Gambar gagal dimuat
+                        </div>
+                    )}
                 </header>
                 <div className="p-4 space-y-1 text-white">
                     <div className="flex gap-2">

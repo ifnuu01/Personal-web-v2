@@ -8,13 +8,31 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 function BlogCard({ blog }: { blog: Blog }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [cardImgLoaded, setCardImgLoaded] = useState(false);
+    const [cardImgError, setCardImgError] = useState(false);
+    const [modalImgLoaded, setModalImgLoaded] = useState(false);
+    const [modalImgError, setModalImgError] = useState(false);
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setModalImgLoaded(false);
+        setModalImgError(false);
+    };
 
     return (
         <>
             <div
                 className="flex flex-col bg-white/10 w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300 overflow-hidden">
                 <header className="w-full h-50">
-                    <img src={blog.imageUrl} alt="image" className="w-full h-50 object-cover" />
+                    {!cardImgLoaded && !cardImgError && (
+                        <div className="absolute inset-0 bg-gray-300 animate-pulse" />
+                    )}
+                    <img src={blog.imageUrl} alt="image" className="w-full h-50 object-cover" onLoad={() => setCardImgLoaded(true)} onError={() => setCardImgError(true)} />
+                    {cardImgError && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500">
+                            Gambar gagal dimuat
+                        </div>
+                    )}
                 </header>
                 <div className="p-4 space-y-1 text-white">
                     <div className="flex justify-between items-center">
@@ -38,7 +56,15 @@ function BlogCard({ blog }: { blog: Blog }) {
             >
                 <div>
                     <div className="space-y-4">
-                        <img src={blog.imageUrl} alt="image" className="w-full h-80 object-cover" />
+                        {!modalImgLoaded && !modalImgError && (
+                            <div className="absolute inset-0 bg-gray-300 animate-pulse" />
+                        )}
+                        <img src={blog.imageUrl} alt="image" className="w-full h-80 object-cover" onLoad={() => setModalImgLoaded(true)} onError={() => setModalImgError(true)} />
+                        {modalImgError && (
+                            <div className="w-full h-64 flex items-center justify-center bg-gray-200 text-gray-500">
+                                Gambar gagal dimuat
+                            </div>
+                        )}
                         <div className="prose prose-invert max-w-none text-white">
                             <ReactMarkdown
                                 children={blog.content || ""}
@@ -66,7 +92,7 @@ function BlogCard({ blog }: { blog: Blog }) {
                     </div>
                     <div className="w-full flex justify-end">
                         <Button
-                            onClick={() => setIsModalOpen(false)}
+                            onClick={handleCloseModal}
                             bg="bg-blue-400/20"
                             color="text-blue-500"
                         >
