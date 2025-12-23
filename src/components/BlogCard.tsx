@@ -8,8 +8,6 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 function BlogCard({ blog }: { blog: Blog }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [cardImgLoaded, setCardImgLoaded] = useState(false);
-    const [cardImgError, setCardImgError] = useState(false);
     const [modalImgLoaded, setModalImgLoaded] = useState(false);
     const [modalImgError, setModalImgError] = useState(false);
 
