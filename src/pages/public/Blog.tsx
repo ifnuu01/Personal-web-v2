@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import BlogCard from "../../components/BlogCard";
 import { useBlog } from "../../hooks/useBlog";
 import PublicLayout from "../../layouts/PublicLayout";
+import Input from "../../components/Input";
 
 const BlogSkeleton = () => {
     return (
@@ -44,20 +45,32 @@ const BlogSkeleton = () => {
 }
 
 export default function Blog() {
+    const [query, setQuery] = useState<string>();
     const { items, getAll, loading } = useBlog();
 
     useEffect(() => {
         getAll();
     }, []);
 
+    const filterBlog = items.filter(blog => blog.title.toLowerCase().includes(query?.toLowerCase() ?? ''))
+
     return (
         <PublicLayout title="Blog" icon="pixel:newspaper">
+            <div className="md:w-96 mx-auto">
+                <Input
+                    label="Filter"
+                    placeholder='Cari Judul Blog...'
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    name="Cari"
+                />
+            </div>
             <div className="mt-10 flex flex-wrap w-full items-center justify-center gap-8">
                 {loading && <BlogSkeleton />}
-                {!loading && items.length === 0 && (
+                {!loading && filterBlog.length === 0 && (
                     <p className="text-white text-2xl">No blog posts available.</p>
                 )}
-                {!loading && items.length > 0 && items.map((blog, index) => (
+                {!loading && filterBlog.length > 0 && filterBlog.map((blog, index) => (
                     <BlogCard
                         key={index}
                         blog={blog}

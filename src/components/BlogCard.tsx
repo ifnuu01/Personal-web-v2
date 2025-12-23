@@ -22,25 +22,14 @@ function BlogCard({ blog }: { blog: Blog }) {
     return (
         <>
             <div
-                className="flex flex-col bg-white/10 w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300 overflow-hidden">
-                <header className="w-full h-50">
-                    {!cardImgLoaded && !cardImgError && (
-                        <div className="absolute inset-0 bg-gray-300 animate-pulse" />
-                    )}
-                    <img src={blog.imageUrl} alt="image" className="w-full h-50 object-cover" onLoad={() => setCardImgLoaded(true)} onError={() => setCardImgError(true)} />
-                    {cardImgError && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500">
-                            Gambar gagal dimuat
-                        </div>
-                    )}
-                </header>
+                className="flex flex-col bg-white/10 w-full backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300 overflow-hidden">
                 <div className="p-4 space-y-1 text-white">
                     <div className="flex justify-between items-center">
-                        <h2 className="text-white text-2xl">{blog.title.slice(0, 20)}</h2>
+                        <h2 className="text-white text-2xl">{blog.title}</h2>
                         <span className="text-lg">{blog.category.name}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                        <p className="text-sm">{blog.content.slice(0, 30)}...</p>
+                        <p className="text-sm">{blog.content.slice(0, 50)}...</p>
                         <div className="w-full flex justify-end">
                             <Button onClick={() => setIsModalOpen(true)}>
                                 Read More &gt;
@@ -56,10 +45,12 @@ function BlogCard({ blog }: { blog: Blog }) {
             >
                 <div>
                     <div className="space-y-4">
-                        {!modalImgLoaded && !modalImgError && (
+                        {!modalImgLoaded && !modalImgError && blog.imageUrl && (
                             <div className="absolute inset-0 bg-gray-300 animate-pulse" />
                         )}
-                        <img src={blog.imageUrl} alt="image" className="w-full h-80 object-cover" onLoad={() => setModalImgLoaded(true)} onError={() => setModalImgError(true)} />
+                        {blog.imageUrl && (
+                            <img src={blog.imageUrl} alt="image" className="w-full h-80 object-cover" onLoad={() => setModalImgLoaded(true)} onError={() => setModalImgError(true)} />
+                        )}
                         {modalImgError && (
                             <div className="w-full h-64 flex items-center justify-center bg-gray-200 text-gray-500">
                                 Gambar gagal dimuat

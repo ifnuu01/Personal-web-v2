@@ -83,10 +83,6 @@ export default function Blog() {
     const validateForm = (): boolean => {
         const errors: Record<string, string> = {};
 
-        if (!selectedFile && !editingBlog) {
-            errors.image = "Blog image is required";
-        }
-
         if (!formData.title.trim()) {
             errors.title = "Blog title is required";
         }
@@ -192,16 +188,20 @@ export default function Blog() {
             key: "imageUrl",
             label: "Image",
             render: (_: unknown, row: Blog) => (
-                <div className="w-16 h-16 overflow-hidden rounded border border-white/20">
-                    <img
-                        src={row.imageUrl}
-                        alt={row.title}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = '/placeholder-image.jpg';
-                        }}
-                    />
+                <div className="w-16 h-16 overflow-hidden rounded border border-white/20 flex items-center justify-center">
+                    {row.imageUrl ? (
+                        <img
+                            src={row.imageUrl}
+                            alt={row.title}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = '/placeholder-image.jpg';
+                            }}
+                        />
+                    ) : (
+                        <span className="block my-auto">No Image</span>
+                    )}
                 </div>
             )
         },
@@ -327,7 +327,6 @@ export default function Blog() {
                             label="Blog Image"
                             onFileChange={handleFileChange}
                             error={formErrors.image}
-                            required={!editingBlog}
                             existingImageUrl={editingBlog?.imageUrl}
                         />
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
