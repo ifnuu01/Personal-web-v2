@@ -8,7 +8,6 @@ const BlogSkeleton = () => {
     return (
         <>
             <div className="flex flex-col bg-white/10 w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300 overflow-hidden animate-pulse">
-                <header className="w-full h-50 bg-white/20 animate-pulse"></header>
                 <div className="mt-4 p-4 space-y-1 text-white/10 animate-pulse">
                     <div className="flex gap-2">
                         <div className="h-6 w-1/4 bg-white/20"></div>
@@ -19,7 +18,6 @@ const BlogSkeleton = () => {
                 </div>
             </div>
             <div className="flex flex-col bg-white/10 w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300 overflow-hidden animate-pulse">
-                <header className="w-full h-50 bg-white/20 animate-pulse"></header>
                 <div className="mt-4 p-4 space-y-1 text-white/10 animate-pulse">
                     <div className="flex gap-2">
                         <div className="h-6 w-1/4 bg-white/20"></div>
@@ -30,7 +28,6 @@ const BlogSkeleton = () => {
                 </div>
             </div>
             <div className="flex flex-col bg-white/10 w-100 backdrop-blur-xs hover:bg-white/20 hover:scale-98 transition-all duration-300 overflow-hidden animate-pulse">
-                <header className="w-full h-50 bg-white/20 animate-pulse"></header>
                 <div className="mt-4 p-4 space-y-1 text-white/10 animate-pulse">
                     <div className="flex gap-2">
                         <div className="h-6 w-1/4 bg-white/20"></div>
