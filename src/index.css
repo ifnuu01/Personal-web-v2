@@ -38,3 +38,26 @@ body {
   margin-bottom: 0 !important;
   line-height: 1.4;
 }
+
+.prose h1 {
+  color: #ce3d41;
+  line-height: 30px;
+}
+.prose h2 {
+  line-height: 30px;
+  color: #3985ff;
+}
+.prose h3 {
+  line-height: 30px;
+  color: #4aff39;
+}
+
+.prose hr {
+  margin: 10px 0px 5px 0px;
+  padding: 0;
+  color: var(--color-primary);
+}
+
+.prose strong {
+  color: #ff0008;
+}
