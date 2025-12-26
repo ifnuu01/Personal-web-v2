@@ -15,9 +15,9 @@ export async function customMarkdownToBlocks(
         const code = match[2];
         const matchStart = match.index;
         const matchFull = match[0];
-        const textBefore = markdown.slice(lastIndex, matchStart).trim();
-        if (textBefore) {
-            const parsedBefore = await editor.tryParseMarkdownToBlocks(textBefore);
+        const textBefore = markdown.slice(lastIndex, matchStart);
+        if (textBefore.trim()) {
+            const parsedBefore = editor.tryParseMarkdownToBlocks(textBefore);
             blocks.push(...parsedBefore);
         }
         blocks.push({
@@ -29,8 +29,8 @@ export async function customMarkdownToBlocks(
         lastIndex = matchStart + matchFull.length;
     }
 
-    const remaining = markdown.slice(lastIndex).trim();
-    if (remaining) {
+    const remaining = markdown.slice(lastIndex);
+    if (remaining.trim()) {
         const parsedRemaining = await editor.tryParseMarkdownToBlocks(remaining);
         blocks.push(...parsedRemaining);
     }
@@ -39,8 +39,7 @@ export async function customMarkdownToBlocks(
 }
 
 export function fixCodeBlocksInMarkdown(markdown: string): string {
-    return markdown.replace(/```(\w*)\s*(.*?)```/gs, (lang, code) => {
-        const trimmed = code.trim();
-        return `\`\`\`${lang || ""}\n${trimmed}\n\`\`\``;
+    return markdown.replace(/```(\w*)\n?([\s\S]*?)```/g, (match, lang, code) => {
+        return `\`\`\`${lang || ""}\n${code}\n\`\`\`\n`;
     });
 }
