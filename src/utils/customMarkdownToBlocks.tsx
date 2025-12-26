@@ -39,7 +39,7 @@ export async function customMarkdownToBlocks(
 }
 
 export function fixCodeBlocksInMarkdown(markdown: string): string {
-    return markdown.replace(/```(\w*)\n?([\s\S]*?)```/g, (match, lang, code) => {
+    return markdown.replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) => {
         return `\`\`\`${lang || ""}\n${code}\n\`\`\`\n`;
     });
 }
