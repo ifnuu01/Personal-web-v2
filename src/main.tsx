@@ -6,7 +6,6 @@ import { AuthProvider } from './contexts/AuthContext.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import withTransition from './utils/withTransition.tsx'
 import Login from "./pages/auth/Login";
-import Dashboard from "./pages/private/Dashboard";
 import Category from "./pages/private/Category";
 import Tech from "./pages/private/Tech";
 import Experience from "./pages/private/Experience";
@@ -27,7 +26,6 @@ const AchievementWithTransition = withTransition(Achievement);
 const BlogWithTransition = withTransition(Blog);
 const ResumeWithTransition = withTransition(Resume);
 const LoginWithTransition = withTransition(Login);
-const DashboardWithTransition = withTransition(Dashboard);
 const CategoryWithTransition = withTransition(Category);
 const TechWithTransition = withTransition(Tech);
 const ExperienceWithTransition = withTransition(Experience);
@@ -56,7 +54,6 @@ const router = createBrowserRouter([
       {
         element: <ProtectedRoute />,
         children: [
-          { path: "dashboard", element: <DashboardWithTransition /> },
           { path: "dashboard/category", element: <CategoryWithTransition /> },
           { path: "dashboard/tech", element: <TechWithTransition /> },
           { path: "dashboard/experience", element: <ExperienceWithTransition /> },

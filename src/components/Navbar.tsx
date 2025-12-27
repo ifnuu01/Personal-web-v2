@@ -43,7 +43,7 @@ export default function Navbar() {
         },
         {
             name: "Dashboard",
-            link: "/dashboard",
+            link: "/dashboard/blog",
             icon: "pixelarticons:dashboard"
         },
         {

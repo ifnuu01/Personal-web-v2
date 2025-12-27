@@ -13,9 +13,9 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
     const location = useLocation();
     const menuItems = [
         {
-            name: "Dashboard",
-            link: "/dashboard",
-            icon: "streamline-pixel:interface-essential-pie-chart-poll-report-1"
+            name: "Blog",
+            link: "/dashboard/blog",
+            icon: "pixel:newspaper"
         },
         {
             name: "Category",
@@ -42,11 +42,6 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
             link: "/dashboard/experience",
             icon: "streamline-pixel:business-products-bag"
         },
-        {
-            name: "Blog",
-            link: "/dashboard/blog",
-            icon: "pixel:newspaper"
-        }
     ];
 
     return (

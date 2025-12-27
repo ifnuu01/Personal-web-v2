@@ -9,7 +9,7 @@ function GuestRoute() {
     }
 
     if (user) {
-        return <Navigate to="/dashboard" replace />;
+        return <Navigate to="/dashboard/blog" replace />;
     }
 
     return (
