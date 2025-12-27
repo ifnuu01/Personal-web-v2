@@ -56,10 +56,10 @@ export default function Blog() {
             <div className="md:w-96 mx-auto">
                 <Input
                     label="Filter"
-                    placeholder='Cari Judul Blog...'
+                    placeholder='Search by blog title'
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    name="Cari"
+                    name="search"
                 />
             </div>
             <div className="mt-10 flex flex-wrap w-full items-center justify-center gap-8">
